@@ -1,0 +1,105 @@
+#include <iostream>
+#include <string>
+using namespace std;
+//Every variable is rated on the scale of 1 to 10
+int adapted = 0;
+class SocialLife
+{
+public:
+	int socialLife(int interaction)
+	{
+		interaction++;
+		return interaction;
+	}
+private:
+		int interaction;
+};
+class Academics
+{
+public:
+	int selfHelp(int hardwork)
+	{
+		if (hardwork)
+		{
+			grades++;
+			adapted++;
+		}
+		return grades;
+	}
+	int helpFromOthers(int interaction)
+	{
+		bool help = 0;
+		if (interaction)
+			help = 1;
+		if (help)
+		{
+			grades++;
+			adapted++;
+		}
+		return grades;
+	}
+
+private:
+		int grades=0;
+};
+class Responsibilities
+{
+public:
+	int routineManagement(int time, int& interaction)
+	{
+		if (time)
+		{			
+			interaction++;
+			adapted++;
+			time--;
+		}
+		return time;
+	}
+	int healthMaintenance(int health, int& interaction)
+	{
+		if (health)
+		{		
+			interaction++; 
+			adapted++;
+			health--;
+		}
+		return health;
+	}
+	int financialManagement(int money, int& interaction)
+	{
+		if (money)
+		{
+			interaction++; 
+			adapted++;
+			money--;
+		}
+		return money;
+	}
+		
+private:
+		int time,health,money;
+};
+void main()
+{
+	int friendliness = 0, hardwork=0, social_life = 0, grades = 0;
+	int  time=10, health=10, money=10;
+	cin >> friendliness;
+	cin >> hardwork;
+	SocialLife object1;
+	social_life = object1.socialLife(friendliness);
+	Academics object2;
+	grades = object2.selfHelp(hardwork);
+	grades += object2.helpFromOthers(social_life);
+	Responsibilities object3;
+	time = object3.routineManagement(time, social_life);
+	health = object3.healthMaintenance(health, social_life);
+	money = object3.financialManagement(money, social_life);
+	cout << adapted << endl;
+	cout << social_life << endl;
+	cout << grades << endl;
+	cout << time << endl;
+	cout << health << endl;
+	cout << money << endl;
+
+}
+
